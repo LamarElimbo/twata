@@ -1,0 +1,113 @@
+.maintext {
+    border:  .1em solid white;
+    border-radius: .2em;
+    margin: 0 1em 1em 0; 
+    box-sizing: border-box;
+    padding: 1em;
+    background-color: rgba(188, 214, 206, 0.89);
+    font-size: 1.25em;
+}
+
+#header {
+    width: 100%;
+    height: 53px;
+    background-color: #ffd5d6;
+    border-bottom: 1px solid white;
+}
+
+#header a {
+    color: #66033c;
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+
+#header a:hover {
+    background-color:#ff084a;
+}
+
+.lead a {
+    color: #66033c;
+}
+
+.lead a:hover {
+    color: #ff084a;
+}
+
+.maintext h2 {
+    color: #033b4c;
+}
+
+.maintext p {
+    color: #5c7fb7;
+}
+
+center b {
+    color:#66033c;
+}
+
+p, h3, .page-header{
+    color:aliceblue;
+}
+	
+.bodystyle {
+    background: #009899;
+}
+
+
+#BBpost {
+    margin: 0 auto;
+}
+
+.graph {
+    position:relative;
+    left: 10px;
+    width: 1030px;
+    height: 630px;
+    background: #0080FF;
+    border-style: solid;
+    border: dotted 5px;
+    border-color: black;
+    margin-bottom:25px;
+    z-index:25;
+}
+
+#neg_graph {
+    top: 730px;
+}
+
+#pos_graph {
+    top: 730px;
+}
+
+#housemateArea {
+    position: relative;
+    bottom: 10px;
+    height: 20px;
+    width: 100%;
+}
+
+.housemate {
+    position: absolute;
+    top: 15px;
+    color: white;
+    font-size: 13px;
+}
+
+/*Rectangle bar class styling*/
+
+.bar {
+  fill: #f9027d;
+  stroke: black;
+  stroke-width: 5;
+}
+
+.bar:hover {
+  fill: #a82d42;
+}
+
+/*Text class styling*/
+
+.text {
+  fill: white;
+  font-family: sans-serif;
+}
