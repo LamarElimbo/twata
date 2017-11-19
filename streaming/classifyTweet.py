@@ -17,16 +17,16 @@ def classifier(tweet):
     
 #check to see if the tweet mentions one of the contestants
 def checkForXAxisTerm(tweet):
-    contestantFound = 0
+    termFound = 0
     formattedTweet = tweetProcessor.formatTweet(tweet)
     tweetWords = formattedTweet.split()
     print(tweetWords)
     
-    for name in settings.CONTESTANTS.keys():
+    for name in settings.NEG_TOPICS.keys():
         if name in tweetWords:
-            contestantFound = 1
-            print('Housemate: ', name)
+            termFound = 1
+            print('term: ', name)
             return name
-    if contestantFound == 0:
+    if termFound == 0:
         noName = 'No name'
         return noName
