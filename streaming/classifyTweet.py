@@ -16,7 +16,7 @@ def classifier(tweet):
     return result
     
 #check to see if the tweet mentions one of the contestants
-def checkForContestant(tweet):
+def checkForXAxisTerm(tweet):
     contestantFound = 0
     formattedTweet = tweetProcessor.formatTweet(tweet)
     tweetWords = formattedTweet.split()

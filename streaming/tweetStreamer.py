@@ -12,7 +12,7 @@ class StreamListener(tweepy.StreamListener):
     def on_status(self, status):
         
         text = status.text
-        housemate = classifyTweet.checkForContestant(text)
+        housemate = classifyTweet.checkForXAxisTerm(text)
         if housemate == 'No name':
             sentiment = 'NA'
         else:
