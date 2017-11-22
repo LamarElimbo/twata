@@ -2,22 +2,22 @@ import pickle
 
 def getNegScript():
     
-    currentScores = open('../sentimentClassifier/housemateScores.pkl', 'rb')
+    currentScores = open('../sentimentClassifier/xScores.pkl', 'rb')
     latestScores = pickle.load(currentScores)
     currentScores.close()
     
-    #formattedScores = [latestScores['arthur'], latestScores['chanelle'], latestScores['charlotte'], latestScores['deborah'], latestScores['ellie'], latestScores['hannah'], latestScores['imran'], latestScores['joe'], latestScores['kayleigh'], latestScores['kieran'], latestScores['lotan'], latestScores['mandy'], latestScores['raph'], latestScores['rebecca'], latestScores['sukhvinder'], latestScores['tom']]
+    latestScores_ordered = sorted(list(val[1] for val in latestScores.items()))
     
-    neg_formattedScores = [23,12,16,20,7,29,10]
+    neg_latestScores_ordered = [23,12,16,20,7,29,10]
     
     def roundup (n) :
         return 10*((n+9)//10)
     
-    neg_highestValue = max(neg_formattedScores)
+    neg_highestValue = max(neg_latestScores_ordered)
 
     neg_graphHeight = roundup(neg_highestValue)
     
-    startNegScript = "var dataArray = " + str(neg_formattedScores) + "; var graphHeight = " + str(neg_graphHeight) + "; "
+    startNegScript = "var dataArray = " + str(neg_latestScores_ordered) + "; var graphHeight = " + str(neg_graphHeight) + "; "
     endNegScript = """
         var svg = d3.select("#neg_graph").append("svg")
                   .attr("height","500px")
@@ -52,22 +52,20 @@ def getNegScript():
 
 def getPosScript():
     
-    currentScores = open('../sentimentClassifier/housemateScores.pkl', 'rb')
+    currentScores = open('../sentimentClassifier/xScores.pkl', 'rb')
     latestScores = pickle.load(currentScores)
     currentScores.close()
     
-    #formattedScores = [latestScores['arthur'], latestScores['chanelle'], latestScores['charlotte'], latestScores['deborah'], latestScores['ellie'], latestScores['hannah'], latestScores['imran'], latestScores['joe'], latestScores['kayleigh'], latestScores['kieran'], latestScores['lotan'], latestScores['mandy'], latestScores['raph'], latestScores['rebecca'], latestScores['sukhvinder'], latestScores['tom']]
-    
-    pos_formattedScores = [23,12,16,20,7,29,10]
+    pos_latestScores_ordered = [23,12,16,20,7,29,10]
     
     def roundup (n) :
         return 10*((n+9)//10)
     
-    pos_highestValue = max(pos_formattedScores)
+    pos_highestValue = max(pos_latestScores_ordered)
 
     pos_graphHeight = roundup(pos_highestValue)
     
-    startPosScript = "var dataArray = " + str(pos_formattedScores) + "; var graphHeight = " + str(pos_graphHeight) + "; "
+    startPosScript = "var dataArray = " + str(pos_latestScores_ordered) + "; var graphHeight = " + str(pos_graphHeight) + "; "
     endPosScript = """
         var svg = d3.select("#pos_graph").append("svg")
                   .attr("height","500px")

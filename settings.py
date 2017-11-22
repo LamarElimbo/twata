@@ -12,6 +12,8 @@ CSV_NAME = "trackedTweets.csv"
 TABLE_NAME = "trackedTweets"
 
 # What are the values in this topic that you want to compare
-NEG_TOPICS = {'arthur': 0, 'chanelle': 0, 'charlotte': 0, 'deborah': 0, 'ellie': 0, 'hannah': 0, 'imran': 0, 'kayleigh': 0, 'kieran': 0, 'lotan': 0, 'mandy': 0, 'raph': 0, 'rebecca': 0, 'sukhvinder': 0, 'tom': 0}
+X_CATEGORIES = {'cat1': 0, 'cat2': 0}
 
-POS_TOPICS = {'arthur': 0, 'chanelle': 0, 'charlotte': 0, 'deborah': 0, 'ellie': 0, 'hannah': 0, 'imran': 0, 'kayleigh': 0, 'kieran': 0, 'lotan': 0, 'mandy': 0, 'raph': 0, 'rebecca': 0, 'sukhvinder': 0, 'tom': 0}
+NEG_COUNTS = X_CATEGORIES
+
+POS_COUNTS = X_CATEGORIES

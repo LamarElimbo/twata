@@ -12,8 +12,8 @@ requiredInfo=[]
 
 @app.route('/')
 def graphIt():
-    if os.path.isfile('../sentimentClassifier/housemateScores.pkl') == False: #check if pickle file exists & create if false
-        createScores = open('housemateScores.pkl', 'wb')
+    if os.path.isfile('../sentimentClassifier/xScores.pkl') == False: #check if pickle file exists & create if false
+        createScores = open('xScores.pkl', 'wb')
         print('creating pkl file with: ', settings.CONTESTANTS)
         pickle.dump(settings.CONTESTANTS, createScores)
         createScores.close()
