@@ -12,18 +12,18 @@ class StreamListener(tweepy.StreamListener):
     def on_status(self, status):
         
         text = status.text
-        housemate = classifyTweet.checkForXAxisTerm(text)
-        if housemate == 'No name':
+        xCat = classifyTweet.checkForXAxisTerm(text)
+        if xCat == 'No name':
             sentiment = 'NA'
         else:
             sentiment = classifyTweet.classifier(text)
-            scoreAdjuster.housemateScoreAdjuster(housemate, sentiment)
+            scoreAdjuster.housemateScoreAdjuster(xCat, sentiment)
         
             
         table = db[settings.TABLE_NAME]
         infoDict = dict(
                 text=text,
-                housemate=housemate,
+                xCat=xCat,
                 sentiment=sentiment,
             )
 

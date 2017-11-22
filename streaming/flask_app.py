@@ -12,21 +12,19 @@ requiredInfo=[]
 
 @app.route('/')
 def graphIt():
-    if os.path.isfile('../sentimentClassifier/xScores.pkl') == False: #check if pickle file exists & create if false
-        createScores = open('xScores.pkl', 'wb')
-        print('creating pkl file with: ', settings.CONTESTANTS)
-        pickle.dump(settings.CONTESTANTS, createScores)
-        createScores.close()
         
-    graphNegScript = getGraphScript.getNegScript()
-    graphPosScript = getGraphScript.getPosScript()
+    negScores, negHeight = getGraphScript.getNegScript()
+    posScores, posHeight = getGraphScript.getPosScript()
 
     currentDate = datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y")
     return render_template('graph.html', 
                            css_source='static/app.css',
                            date=currentDate, 
-                           graph_neg_script=graphNegScript, 
-                           graph_pos_script=graphPosScript)
+                           neg_latestScores_ordered=negScores, 
+                           neg_graphHeight=negHeight,
+                           pos_latestScores_ordered=posScores, 
+                           pos_graphHeight=posHeight
+                          )
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
