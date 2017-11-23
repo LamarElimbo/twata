@@ -22,7 +22,7 @@ def checkForXAxisTerm(tweet):
     tweetWords = formattedTweet.split()
     print(tweetWords)
     
-    for name in settings.NEG_TOPICS.keys():
+    for name in settings.NEG_COUNTS.keys():
         if name in tweetWords:
             termFound = 1
             print('term: ', name)

@@ -15,6 +15,7 @@ def graphIt():
         
     negScores, negHeight = getGraphScript.getNegScript()
     posScores, posHeight = getGraphScript.getPosScript()
+    x_keys = getGraphScript.getXCats()
 
     currentDate = datetime.datetime.now().strftime("%I:%M%p on %B %d, %Y")
     return render_template('graph.html', 
@@ -23,7 +24,8 @@ def graphIt():
                            neg_latestScores_ordered=negScores, 
                            neg_graphHeight=negHeight,
                            pos_latestScores_ordered=posScores, 
-                           pos_graphHeight=posHeight
+                           pos_graphHeight=posHeight,
+                           x_cats=x_keys
                           )
 
 if __name__ == '__main__':

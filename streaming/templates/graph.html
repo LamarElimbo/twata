@@ -3,100 +3,109 @@
 {% block content %}
     <h1 class="page-header">Welcome to Twata!</h1>
     <p class="lead">Twitter data collection - New topic every week</p>
+    <p style="text-align:left; position:relative; bottom:10px; left:5px">
+        <span style="font-size:15pt;"><strong>Graph started collecting tweets: </strong>{{date}}</span>
+    </p>
 
     <div class="row">
         <div class="col-xs-11 col-md-5 maintext">
-            <div>
-                <p><center>This is where the topic of the week will be.</center></p>
+            <center><h3>Positive Tweet Count</h3></center>
+            <div class="graph" id="pos_graph">
+
+                <script>
+                    var dataArray = {{pos_latestScores_ordered}}; var graphHeight = {{pos_graphHeight}}; 
+                    var svg = d3.select("#pos_graph").append("svg")
+                                  .attr("height","500px")
+                                  .attr("width","100%")
+                                  .attr("z-index","70")
+                                  .attr("position", "fixed")
+                                  .attr("top", "0")
+                                  .attr("left", "0");
+
+                        svg.selectAll("rect")
+                            .data(dataArray)
+                            .enter().append("rect")
+                                  .attr("class", "bar")
+                                  .attr("height", function(d, i) {return (500*d/graphHeight)})
+                                  .attr("width","50")
+                                  .attr("z-index","80")
+                                  .attr("x", function(d, i) {return (i * 160) + 10})
+                                  .attr("y", function(d, i) {return 500 - (500*d/graphHeight)});
+
+                        svg.selectAll("text")
+                            .data(dataArray)
+                            .enter().append("text")
+                            .text(function(d) {return d})
+                                   .attr("class", "text")
+                                   .attr("z-index","90")
+                                   .attr("x", function(d, i) {return (i * 160) + 25})
+                                   .attr("y", function(d, i) {return 520 - (500*d/graphHeight)});
+                </script>
+                <div id='xLabelArea'>
+                    {% set num_cats = x_cats | count %}
+                    {% set cat_num = 0 %}
+                    {% for category in x_cats %}
+                        <div class='xLabel' style='left:{{100/num_cats * cat_num}}%; width:{{100/num_cats}}%;'><center><strong>{{category}}</strong></center></div>
+                        {% set cat_num = cat_num + 1 %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
+        <div class="col-xs-11 col-md-5 col-md-offset-2 maintext">
+            <center><h3>Negative Tweet Count</h3></center>
+            <div class="graph" id="neg_graph">
+                <script>
+                    var dataArray = {{neg_latestScores_ordered}}; var graphHeight = {{neg_graphHeight}}; 
+                    var svg = d3.select("#neg_graph").append("svg")
+                                  .attr("height","500px")
+                                  .attr("width","100%")
+                                  .attr("z-index","70")
+                                  .attr("position", "fixed")
+                                  .attr("top", "0")
+                                  .attr("left", "0");
 
-        <div class="col-xs-11 col-md-5 maintext" style='position:absolute; right:7%;'>
-            <div>
-                <center>
-                    <p style="text-align:left; position:relative; bottom:10px; left:5px">
-                        <span style="font-size:15pt;"><strong>Graph started collecting tweets: </strong>{{date}}</span>
-                    </p>
+                        svg.selectAll("rect")
+                            .data(dataArray)
+                            .enter().append("rect")
+                                  .attr("class", "bar")
+                                  .attr("height", function(d, i) {return (500*d/graphHeight)})
+                                  .attr("width","50")
+                                  .attr("z-index","80")
+                                  .attr("x", function(d, i) {return (i * 160) + 10})
+                                  .attr("y", function(d, i) {return 500 - (500*d/graphHeight)});
 
-                    <div class="graph" id="neg_graph">
-                        <h3>Negative Tweet Count</h3>
-                        <script>
-                            var dataArray = {{neg_latestScores_ordered}}; var graphHeight = {{neg_graphHeight}}; 
-                            var svg = d3.select("#neg_graph").append("svg")
-                                          .attr("height","500px")
-                                          .attr("width","100%")
-                                          .attr("z-index","70")
-                                          .attr("position", "fixed")
-                                          .attr("top", "0")
-                                          .attr("left", "0");
-
-                                svg.selectAll("rect")
-                                    .data(dataArray)
-                                    .enter().append("rect")
-                                          .attr("class", "bar")
-                                          .attr("height", function(d, i) {return (500*d/graphHeight)})
-                                          .attr("width","50")
-                                          .attr("z-index","80")
-                                          .attr("x", function(d, i) {return (i * 160) + 10})
-                                          .attr("y", function(d, i) {return 500 - (500*d/graphHeight)});
-
-                                svg.selectAll("text")
-                                    .data(dataArray)
-                                    .enter().append("text")
-                                    .text(function(d) {return d})
-                                           .attr("class", "text")
-                                           .attr("z-index","90")
-                                           .attr("x", function(d, i) {return (i * 160) + 25})
-                                           .attr("y", function(d, i) {return 520 - (500*d/graphHeight)});
-                        </script>
-                        <div id='housemateArea'>
-                            <div class='housemate' id='Amelia' style='left: 20px; color:white;'><strong>Amelia</strong></div>
-                        </div>
-                    </div>
-                </center>
-                <br><br>
+                        svg.selectAll("text")
+                            .data(dataArray)
+                            .enter().append("text")
+                            .text(function(d) {return d})
+                                   .attr("class", "text")
+                                   .attr("z-index","90")
+                                   .attr("x", function(d, i) {return (i * 160) + 25})
+                                   .attr("y", function(d, i) {return 520 - (500*d/graphHeight)});
+                </script>
+                <div id='xLabelArea'>
+                    {% set num_cats = x_cats | count %}
+                    {% set cat_num = 0 %}
+                    {% for category in x_cats %}
+                        <div class='xLabel' style='left:{{100/num_cats * cat_num}}%; width:{{100/num_cats}}%;'><center><strong>{{category}}</strong></center></div>
+                        {% set cat_num = cat_num + 1 %}
+                    {% endfor %}
+                </div>
             </div>
-
-            <div class="col-xs-11 col-md-5 maintext" style='position:absolute; right:7%;'>
-                <center>
-
-                    <div class="graph" id="pos_graph">
-                        <h3>Positive Tweet Count</h3>
-                        <script>
-                            var dataArray = {{pos_latestScores_ordered}}; var graphHeight = {{pos_graphHeight}}; 
-                            var svg = d3.select("#pos_graph").append("svg")
-                                          .attr("height","500px")
-                                          .attr("width","100%")
-                                          .attr("z-index","70")
-                                          .attr("position", "fixed")
-                                          .attr("top", "0")
-                                          .attr("left", "0");
-
-                                svg.selectAll("rect")
-                                    .data(dataArray)
-                                    .enter().append("rect")
-                                          .attr("class", "bar")
-                                          .attr("height", function(d, i) {return (500*d/graphHeight)})
-                                          .attr("width","50")
-                                          .attr("z-index","80")
-                                          .attr("x", function(d, i) {return (i * 160) + 10})
-                                          .attr("y", function(d, i) {return 500 - (500*d/graphHeight)});
-
-                                svg.selectAll("text")
-                                    .data(dataArray)
-                                    .enter().append("text")
-                                    .text(function(d) {return d})
-                                           .attr("class", "text")
-                                           .attr("z-index","90")
-                                           .attr("x", function(d, i) {return (i * 160) + 25})
-                                           .attr("y", function(d, i) {return 520 - (500*d/graphHeight)});
-                        </script>
-                        <div id='housemateArea'>
-                            <div class='housemate' id='Amelia' style='left: 20px; color:white;'><strong>Amelia</strong></div>
-                        </div>
-                    </div>
-                </center>
-            </div>
+        </div>
+    </div>
+    <div class="row justify-content-between">
+        <div class="col-xs-11 col-md-5 maintext">
+          <center><h3>Positive Tweets</h3></center>
+        </div>
+        <div class="col-xs-11 col-md-5 col-md-offset-2 maintext">
+          <center><h3>Negative Tweets</h3></center>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-xs-11 col-md-12 maintext">
+            <center><h3>Timeline Tweet Count</h3></center>
+            <div class="graph"></div>
         </div>
     </div>
     <script type="text/javascript" src="/static/d3.min.js"></script>

@@ -1,5 +1,14 @@
 import pickle
 
+def getXCats():
+    currentScores = open('../sentimentClassifier/xScores.pkl', 'rb')
+    negScores, posScores = pickle.load(currentScores)
+    currentScores.close()
+    
+    x_keys_ordered = sorted(list(val[0] for val in negScores.items()))
+    
+    return x_keys_ordered
+
 def getNegScript():
     
     currentScores = open('../sentimentClassifier/xScores.pkl', 'rb')
