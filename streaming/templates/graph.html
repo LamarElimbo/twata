@@ -26,10 +26,10 @@
                             .data(dataArray)
                             .enter().append("rect")
                                   .attr("class", "bar")
-                                  .attr("height", function(d, i) {return (500*d/graphHeight)})
-                                  .attr("width","50")
+                                  .attr("height", function(d, i) {return (400*d/graphHeight)})
+                                  .attr("width","{{100/x_cats | count - 10 }}%")
                                   .attr("z-index","80")
-                                  .attr("x", function(d, i) {return (i * 160) + 10})
+                                  .attr("x", function(d, i) {return 100/{{x_cats | count}} * i + 5 + "%"})
                                   .attr("y", function(d, i) {return 400 - (400*d/graphHeight)});
 
                         svg.selectAll("text")
@@ -38,7 +38,7 @@
                             .text(function(d) {return d})
                                    .attr("class", "text")
                                    .attr("z-index","90")
-                                   .attr("x", function(d, i) {return (i * 160) + 25})
+                                   .attr("x", function(d, i) {return 100/{{x_cats | count}} * i + 7 + "%"})
                                    .attr("y", function(d, i) {return 420 - (400*d/graphHeight)});
                 </script>
                 <div id='xLabelArea'>
@@ -68,10 +68,10 @@
                             .data(dataArray)
                             .enter().append("rect")
                                   .attr("class", "bar")
-                                  .attr("height", function(d, i) {return (500*d/graphHeight)})
-                                  .attr("width","50")
+                                  .attr("height", function(d, i) {return (400*d/graphHeight)})
+                                  .attr("width","{{100/num_cats - 10 }}%")
                                   .attr("z-index","80")
-                                  .attr("x", function(d, i) {return (i * 160) + 10})
+                                  .attr("x", function(d, i) {return 100/{{x_cats | count}} * i + 5 + "%"})
                                   .attr("y", function(d, i) {return 400 - (400*d/graphHeight)});
 
                         svg.selectAll("text")
@@ -80,7 +80,7 @@
                             .text(function(d) {return d})
                                    .attr("class", "text")
                                    .attr("z-index","90")
-                                   .attr("x", function(d, i) {return (i * 160) + 25})
+                                   .attr("x", function(d, i) {return 100/{{x_cats | count}} * i + 7 + "%"})
                                    .attr("y", function(d, i) {return 420 - (400*d/graphHeight)});
                 </script>
                 <div id='xLabelArea'>
