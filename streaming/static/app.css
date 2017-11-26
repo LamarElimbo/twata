@@ -103,6 +103,15 @@ p, h3, .page-header{
     border-radius: 50%;
 }
 
+/*Line class styling*/
+
+.line {
+    fill: #f9027d;
+    stroke: black;
+    stroke-width: 5;
+    border-radius: 50%;
+}
+
 .bar:hover {
   fill: #a82d42;
 }

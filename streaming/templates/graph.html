@@ -116,6 +116,16 @@
                                   .attr("position", "fixed")
                                   .attr("top", "0")
                                   .attr("left", "0");
+                    
+                        svg.selectAll('line')
+                            .data(dataArray)
+                            .enter().append("line")
+                                .attr("class", "line")
+                                .attr("z-index","70")
+                                .attr("x1", function(d, i) { var prevData = i>0?dataArray[i-1]:0; return 100/{{x_cats | count}} * prevData + 6.5 + "%"})
+                                .attr("y1", function(d, i) { var prevData = i>0?dataArray[i-1]:0; return 403 - (400*prevData/graphHeight)})
+                                .attr("x2", function(d, i) {return 100/{{x_cats | count}} * i + 6.5 + "%"})
+                                .attr("y2", function(d, i) {return 403 - (400*d/graphHeight)});
 
                         svg.selectAll("circle")
                             .data(dataArray)
@@ -132,8 +142,9 @@
                             .text(function(d) {return d})
                                    .attr("class", "text")
                                    .attr("z-index","90")
-                                   .attr("x", function(d, i) {return 100/{{x_cats | count}} * i + 7 + "%"})
-                                   .attr("y", function(d, i) {return 420 - (400*d/graphHeight)});
+                                   .attr("x", function(d, i) {return 100/{{x_cats | count}} * i + 6.5 + "%"})
+                                   .attr("y", function(d, i) {return 407 - (400*d/graphHeight)});
+
                 </script>
             </div>
             #create a dictionary of lists including the date, num pos tweets and num neg tweets
