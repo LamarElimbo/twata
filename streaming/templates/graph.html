@@ -123,7 +123,7 @@
                                   .attr("class", "dot")
                                   .attr("r", "10")
                                   .attr("z-index","80")
-                                  .attr("cx", function(d, i) {return 100/{{x_cats | count}} * i + 5 + "%"})
+                                  .attr("cx", function(d, i) {return 100/{{x_cats | count}} * i + 7 + "%"})
                                   .attr("cy", function(d, i) {return 400 - (400*d/graphHeight)});
 
                         svg.selectAll("text")
