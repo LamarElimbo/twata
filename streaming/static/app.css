@@ -94,6 +94,19 @@ p, h3, .page-header{
   fill: #a82d42;
 }
 
+/*Dot class styling*/
+
+.dot {
+    fill: #f9027d;
+    stroke: black;
+    stroke-width: 5;
+    border-radius: 50%;
+}
+
+.bar:hover {
+  fill: #a82d42;
+}
+
 /*Text class styling*/
 
 .text {
