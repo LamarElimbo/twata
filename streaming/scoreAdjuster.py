@@ -20,6 +20,8 @@ def housemateScoreAdjuster(p_xCat, p_sentiment):
 
         #adjust values
         negScores[p_xCat] += 1
+        print('NEG SCORES: ', negScores)
+        print('POS SCORES: ', posScores)
 
         #save new scores
         newScores = open('xScores.pkl', 'wb')
@@ -32,7 +34,9 @@ def housemateScoreAdjuster(p_xCat, p_sentiment):
         currentScores.close()
 
         #adjust values
-        scores[p_xCat] += 1
+        posScores[p_xCat] += 1
+        print('NEG SCORES: ', negScores)
+        print('POS SCORES: ', posScores)
 
         #save new scores
         newScores = open('xScores.pkl', 'wb')

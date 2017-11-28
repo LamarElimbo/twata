@@ -97,7 +97,6 @@ p, h3, .page-header{
 /*Dot class styling*/
 
 .dot {
-    fill: #f9027d;
     stroke: black;
     stroke-width: 5;
     border-radius: 50%;
@@ -106,8 +105,6 @@ p, h3, .page-header{
 /*Line class styling*/
 
 .line {
-    fill: #f9027d;
-    stroke: black;
     stroke-width: 5;
     border-radius: 50%;
 }
