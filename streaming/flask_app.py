@@ -1,10 +1,6 @@
 from flask import Flask, request, render_template, make_response
-from io import StringIO
-import urllib
-import pickle, os, getGraphScript
+import getGraphScript
 import sys
-sys.path.append("../")
-import settings
 import datetime
 
 app = Flask(__name__)
